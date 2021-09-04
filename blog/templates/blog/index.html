@@ -1,0 +1,40 @@
+{% extends 'blog/base.html'%}
+
+  {% block content %}
+    <main class="my-5">
+      <div class="container text-center">
+        
+        <h4 class="mb-5"><strong>Les posts recents</strong></h4>
+      <!-- first post -->
+        <div class="row col-md-7 mx-auto mb-4 ">
+        {% for post in object_list %}  
+          <div class="">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="{{ post.image.url }}"  class="img-fluid" />
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">{{ post.title }} </h5>
+                <small>{{ post.date_added }}</small>
+                <p style="text-align:justify;" class="card-text">
+                  {{ post.intro }} 
+                </p>
+                <a href="detail/{{ post.slug }}" class="btn btn-primary">lire plus</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}  
+      </div>
+    </main>    
+  {% endblock %}
+
+
+
+
+
+
+
+  

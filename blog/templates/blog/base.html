@@ -1,0 +1,193 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+       <!-- Bootstrap offline CSS -->
+	<link rel="stylesheet" type="text/css" href="{% static './css/bootstrap.min.css' %}">
+    <!-- fant-awesome -->
+    <script src="{% static './js/all.js' %}"></script>
+   <!--google-fonts -->
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;700&display=swap" rel="stylesheet">
+   <!--main css-->
+   <link rel="stylesheet" type="text/css" href="{% static './css/main.css' %}">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>blog</title>
+</head>
+<body>
+     <header>
+    <!-- Intro settings -->
+    <style>
+      #intro {
+        /* Margin to fix overlapping fixed navbar */
+        margin-top: 58px;
+        background: url("{% static './image/5.jpg' %}");
+      }
+      @media (max-width: 991px) {
+        #intro {
+          /* Margin to fix overlapping fixed navbar */
+          margin-top: 45px;
+        }
+      }
+    </style>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
+      <div class="container-fluid">
+        <!-- Navbar brand -->
+        <a class="navbar-brand"  href="#">
+          <img src="image/logo.png" height="20" alt="" loading="lazy"
+            style="margin-top: -3px;" />
+        </a>
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
+          aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarExample01">
+          <ul class="navbar-nav text-white me-auto mb-2 mb-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link text-white" aria-current="page" href="">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" rel="nofollow"
+                >A propos </a>
+            </li>
+            <li class="nav-item text-white">
+              <a class="nav-link" href="#">contact</a>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav d-flex flex-row">
+            <!-- Icons -->
+            <li class="nav-item me-3 me-lg-0">
+              <a class="nav-link" href="#" rel="nofollow"
+                target="_blank">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </li>
+            <li class="nav-item me-3 me-lg-0">
+              <a class="nav-link" href="#" rel="nofollow" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+            </li>
+            <li class="nav-item me-3 me-lg-0">
+              <a class="nav-link" href="#" rel="nofollow" target="_blank">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </li>
+            <li class="nav-item me-3 me-lg-0">
+              <a class="nav-link" href="#" rel="nofollow" target="_blank">
+                <i class="fab fa-github"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar -->
+
+    <!-- Jumbotron -->
+    <div id="intro" class="p-5 text-center bg-light ">
+      <h1 class="mb-3  text-white display-4">Apprendre en pratiquant </h1>
+      <p class="mb-3 display-5 text-white">apprend la programmation informatique  avec donald programmeur </p>
+      <a class="btn btn-primary m-2" href="#1A" role="button" rel="nofollow"
+        target="_blank">Commence maintenant</a>
+      <a class="btn btn-primary m-2" href="#" target="_blank"
+        role="button">Ebook django</a>
+    </div>
+    <!-- Jumbotron -->
+  </header>
+  <!--Main Navigation-->
+
+
+
+    <section>
+        {% block content %}{% endblock %}
+    </section>
+
+
+
+   <!-- Pagination -->
+  
+   <nav class="my-4" aria-label="...">
+    {% if is_paginated %}
+       <ul class="pagination  justify-content-center">
+         {% if page_obj.has_previous %}
+         <li class="page-item">
+           <a class="page-link" href="{% url 'home' %}?page={{ page_obj.previous_page_number}}" tabindex="-1" aria-disabled="true">Precedent</a>
+         </li>
+         <li class="page-item"><a class="page-link" href="#">{{ page_obj.previous_page_numbe }}</a></li>
+         {% endif %}
+
+         
+         <li class="page-item active" aria-current="page">
+           <a class="page-link" href="#">{{ page_obj.number }} <span class="sr-only">(current)</span></a>
+         </li>
+          {% if page_obj.has_next %} 
+         <li class="page-item"><a class="page-link" href="#">{{ page_obj.next_page_number }}</a></li>
+         <li class="page-item">
+           <a class="page-link" href="{% url 'home' %}?page={{ page_obj.next_page_number }}">suivant</a>
+         </li>
+         {% endif %}
+       </ul>
+     {% endif %}  
+     </nav>
+ 
+</div>
+</main>
+<!--Main layout-->
+
+<!--Footer-->
+<footer class="bg-light text-lg-start">
+<div class="py-4 text-center">
+ <a role="button" class="btn btn-primary btn-lg m-2"
+   href="#!" rel="nofollow" target="_blank">
+   apprendre django
+ </a>
+ <a role="button" class="btn btn-primary btn-lg m-2" href="#!">
+   aprendre python
+ </a>
+</div>
+
+<hr class="m-0" />
+
+<div class="text-center py-4 align-items-center">
+ <p>Suivez moi sur les media suivants </p>
+ <a href="#" class="btn btn-primary m-1" role="button"
+   rel="nofollow" target="_blank">
+   <i class="fab fa-youtube"></i>
+ </a>
+ <a href="#" class="btn btn-primary m-1" role="button" rel="nofollow"
+   target="_blank">
+   <i class="fab fa-facebook-f"></i>
+ </a>
+ <a href="#" class="btn btn-primary m-1" role="button" rel="nofollow"
+   target="_blank">
+   <i class="fab fa-twitter"></i>
+ </a>
+ <a href="#" class="btn btn-primary m-1" role="button" rel="nofollow"
+   target="_blank">
+   <i class="fab fa-github"></i>
+ </a>
+</div>
+
+<!-- Copyright -->
+<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+ © 2020 Copyright:donaldprogrammeur 
+ <a class="text-dark" href="#!"></a>
+</div>
+<!-- Copyright -->
+</footer>
+<!--Footer-->
+
+
+
+
+<script src="{% static './js/jquery-3.6.0.min.js' %}"></script>
+<script type="text/javascript" src="{% static './js/jquery-3.6.0.min.js' %}"></script>
+
+
+</body>
+</html>
